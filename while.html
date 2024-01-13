@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>套娃语句生成</title>
+</head>
+<body>
+  <form>
+    <select>
+      <option value="a">子非鱼，安知鱼之乐</option>
+      <option value="b">剪剪刀上的绳子</option>
+      <option value="c">中国认为美国干涉了中国内政</option>
+    </select>
+    <input type="number" min="1">
+    <button>生成</button>
+  </form>
+  <div class="result">
+
+  </div>
+  <script>
+    var aq="庄子与惠子游于濠梁之上。庄子曰：“鲦鱼出游从容，是鱼之乐也。”惠子曰：“子非鱼，安知鱼之乐？”庄子曰：“子非我，安知我不知鱼之乐？”"
+    var az="惠子曰：“我非子，固不知子矣；子固非鱼也，子之不知鱼之乐，全矣！”庄子曰：“请循其本。子曰‘汝安知鱼乐’云者，既已知吾知之而问我，我知之濠上也。”";
+    var ax="庄子曰：“子非我，安知我不知$0鱼之乐？”"
+    var ay="惠子曰：“子非我，安知$0鱼之乐？”"
+    var aa="子不知我不知$0";
+    var ab="我不知子不知$0";
+
+    function xha(num){
+      var xh='';
+      xh+=aq;
+      for(var i=1;i<num;i++){
+        var _1=ax;
+        for(var j=0;j<i;j++){
+          _1=_1.replace("$0",aa);
+        }
+        _1=_1.replace('$0','');
+        var _2=ay;
+        for(var j=0;j<i;j++){
+          _2=_2.replace("$0",ab);
+        }
+        _2=_2.replace('$0','');
+        xh+=_2+_1;
+      }
+      xh+=az;
+      return xh;
+    }
+
+    var cq="中国谴责美国干涉中国内政";
+    var ca=["美国认为","中国认为"]
+    var cb=["的做法是干涉美国内政","的做法是干涉中国内政"];
+    function xhc(num){
+      var xh=cq+'，';
+      function _(num){
+        var xh=cq;
+        for(var i=0;i<num;i++){
+          xh=ca[i%2]+xh+cb[i%2];
+        }
+        return xh;
+      }
+      for(var i=1;i<num;i++){
+        xh+=_(i)+'，';
+      }
+      return xh;
+    }
+
+    var bq="因为要剪东西，所以我买了一把新剪刀，然后发现这把新剪刀的剪刀把被绳子绑住了";
+    var bz="。。。";
+    var bx="，于是我又买了一把$0的剪刀，但是$1把也被绳子绑住了";
+    var ba="剪";
+    var bb="剪刀把上的绳子的剪刀的"
+
+    function xhb(num){
+      var xh=bq;
+      for(var i=1;i<num;i++){
+        var _1='新';
+        for(var j=0;j<i;j++){
+          _1=ba+_1+bb;
+        }
+        _1=_1.slice(0,-1);
+        xh+=bx.replace('$0',_1).replace('$1',_1);
+      }
+      return xh+bz;
+    }
+
+    document.querySelector("form").onsubmit=function(e){
+      e.preventDefault();
+      var num=document.querySelector("input").value;
+      var type=document.querySelector("select").value;
+      document.querySelector(".result").innerText=window['xh'+type](parseInt(num));
+    }
+  </script>
+</body>
+</html>

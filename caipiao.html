@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>彩票模拟器</title>
+</head>
+<body>
+  <h1>第 <script>document.write(Date.now())</script> 次模拟彩票开售！</h1>
+  <h2>购买彩票</h2>
+  <form>
+    <input required type="number" min="1" max="33">
+    <input required type="number" min="1" max="33">
+    <input required type="number" min="1" max="33">
+    <input required type="number" min="1" max="33">
+    <input required type="number" min="1" max="33">
+    <input required type="number" min="1" max="33"> |
+    <input required type="number" min="1" max="16"><br>
+    <button>点击购买</button>
+  </form>
+  <h2>开奖</h2>
+  <p>中奖号码：<span id="hmr"></span></p>
+  <p>你的号码：<span id="hmy"></span></p>
+  <p id="j">等待开奖。。。</p>
+</body>
+<script>
+  var jiang=[];
+  for(var i=0;i<6;i++){
+    jiang[i]=Math.floor(Math.random()*33)+1;
+  }
+  jiang[6]= Math.floor(Math.random()*16)+1;
+
+  var t=[];
+  document.querySelector("form").onsubmit=function(e){
+    e.preventDefault();
+    console.log(this);
+    this.querySelectorAll('input').forEach(function(ip){
+      ip.setAttribute("readonly","");
+      t.push(parseInt(ip.value));
+    })
+    document.querySelector("button").disabled=true;
+    kaijiang();
+  }
+
+  function kaijiang(){
+    document.getElementById("hmr").innerText=jiang.join(' ');
+    document.getElementById("hmy").innerText=t.join(' ');
+    var g=0,b=0;
+    for(var i=0;i<6;i++){
+      if(jiang[i]==t[i]){
+        g++;
+      }
+    }
+    if(jiang[6]==t[6]){
+      b++;
+    }
+    if(g==6&&b==1){
+      document.getElementById("j").innerText="恭喜你中了一等奖，奖金500w";
+    }else if(g==6&&b==0){
+      document.getElementById("j").innerText="恭喜你中了二等奖，奖金125w";
+    }else if(g==5&&b==1){
+      document.getElementById("j").innerText="恭喜你中了三等奖，奖金3000";
+    }else if((g==5&&b==0)||(g==4&&b==1)){
+      document.getElementById("j").innerText="恭喜你中了四等奖，奖金200";
+    }else if((g==4&&b==0)||(g==3&&b==1)){
+      document.getElementById("j").innerText="恭喜你中了五等奖，奖金10";
+    }else if((g==3&&b==0)||(g==2&&b==1)||(g==1&&b==1)||(g==0&&b==1)){
+      document.getElementById("j").innerText="恭喜你中了六等奖，奖金5";
+    }else{
+      document.getElementById("j").innerText="正如一般的情况，你什么奖也没中";
+    }
+  }
+</script>
+</html>

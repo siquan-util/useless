@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>给图片关灯</title>
+  <style>
+    img{
+      max-width: 80%;
+      display: block;
+      margin: 10px auto;
+    }
+    input,button{
+      display: block;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+  <img src="" alt="">
+  <input type="file" id="file" accept="image/*">
+  <button onclick="turndark()">关 灯</button>
+</body>
+<script>
+  var f=false;
+  document.getElementById("file").onchange = function(e) {
+    if(this.files.length>0){
+      f=true;
+      document.querySelector("img").src = URL.createObjectURL(this.files[0]);
+    }
+  }
+  function turndark(){
+    if(!f) return alert('请上传图片');
+    var i=document.querySelector("img");
+    var w=i.naturalWidth,h=i.naturalHeight;
+    var c=document.createElement("canvas");
+    c.width=w;
+    c.height=h;
+    var ctx=c.getContext("2d");
+    ctx.fillStyle="black";
+    ctx.fillRect(0,0,w,h);
+    i.src=c.toDataURL();
+  }
+</script>
+</html>

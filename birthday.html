@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  <div class="c" style="display: none;">
+    <h1></h1>
+    <p><span id="s">祝你在新的一岁中，身体健康，天天开心</span><br>
+    ————来自 <span id="f"></span> 的祝福</p>
+  </div>
+
+  <div class="h" style="display: none;">
+    <p>在URL后拼接：?n=过生日的人&f=你的名字&s=祝福语</p>
+  </div>
+
+  <script>
+    var search=new URL(window.location.href).searchParams;
+    var n=search.get('n');
+    var f=search.get('f');
+    var s=search.get('s');
+    if(!n){
+      document.querySelector(".h").style.display='block';
+      document.title="为朋友送上生日祝福"
+      
+    }else{
+      document.querySelector(".c").style.display='block';
+      document.querySelector("h1").innerText=document.title=n+' 生日快乐！'
+      document.querySelector("#f").innerText=f??'匿名用户';
+      if(s){
+        document.querySelector("#s").innerText=s;
+      }
+    }
+    
+  </script>
+</body>
+</html>
