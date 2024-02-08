@@ -106,33 +106,6 @@ ul#files li a.highlight {
   background: #ffff4f;
   border-color: #E9DC51;
 }
-#search {
-  display: block;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 90px;
-  -webkit-transition: width ease 0.2s, opacity ease 0.4s;
-  -moz-transition: width ease 0.2s, opacity ease 0.4s;
-  -webkit-border-radius: 32px;
-  -moz-border-radius: 32px;
-  -webkit-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 1px 0px rgba(255, 255, 255, 0.03);
-  -moz-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 1px 0px rgba(255, 255, 255, 0.03);
-  -webkit-font-smoothing: antialiased;
-  text-align: left;
-  font: 13px "Helvetica Neue", Arial, sans-serif;
-  padding: 4px 10px;
-  border: none;
-  background: transparent;
-  margin-bottom: 0;
-  outline: none;
-  opacity: 0.7;
-  color: #888;
-}
-#search:focus {
-  width: 120px;
-  opacity: 1.0; 
-}
 
 /*views*/
 #files span {
@@ -196,22 +169,6 @@ ul#files.view-details li.header {
     line-height: 16px;
     padding: 0;
   }
-  #search {
-    position: static;
-    width: 100%;
-    font-size: 2em;
-    line-height: 1.8em;
-    text-indent: 10px;
-    border: 0;
-    border-radius: 0;
-    padding: 10px 0;
-    margin: 0;
-  }
-  #search:focus {
-    width: 100%;
-    border: 0;
-    opacity: 1;
-  }
   .directory h1 {
     font-size: 2em;
     line-height: 1.5em;
@@ -265,82 +222,27 @@ ul#files.view-details li.header {
 #files .icon-text-html .name {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHtSURBVDjLjZM9T9tQFIYpQ5eOMBKlW6eWIQipa8RfQKQghEAKqZgKFQgmFn5AWyVDCipVQZC2EqBWlEqdO2RCpAssQBRsx1+1ndix8wFvfW6wcUhQsfTI0j33PD7n+N4uAF2E+/S5RFwG/8Njl24/LyCIOI6j1+v1y0ajgU64cSSTybdBSVAwSMmmacKyLB/DMKBpGkRRZBJBEJBKpXyJl/yABLTBtm1Uq1X2JsrlMnRdhyRJTFCpVEAfSafTTUlQoFs1luxBAkoolUqQZbmtJTYTT/AoHInOfpcwtVtkwcSBgrkDGYph+60oisIq4Xm+VfB0+U/P0Lvj3NwPGfHPTcHMvoyFXwpe7UmQtAqTUCU0D1VVbwTPVk5jY19Fe3ZfQny7CE51WJDXqpjeEUHr45ki9rIqa4dmQiJfMLItGEs/FcQ2ucbRmdnSYy5vYWyLx/w3EaMfLmBaDpMQvuDJ65PY8Dpnz3wpYmLtApzcrIAqmfrEgdZH1grY/a36w6Xz0DKD8ES25/niYS6+wWE8mWfByY8cXmYEJFYLkHUHtVqNQcltAvoLD3v7o/FUHsNvzlnwxfsCEukC/ho3yUHaBN5Buo17Ojtyl+DqrnvQgUtfcC0ZcAdkUeA+ye7eMru9AUGIJPe4zh509UP/AAfNypi8oj/mAAAAAElFTkSuQmCC);
 }
+#files .icon-default .name {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC4SURBVCjPdZFbDsIgEEWnrsMm7oGGfZrohxvU+Iq1TyjU60Bf1pac4Yc5YS4ZAtGWBMk/drQBOVwJlZrWYkLhsB8UV9K0BUrPGy9cWbng2CtEEUmLGppPjRwpbixUKHBiZRS0p+ZGhvs4irNEvWD8heHpbsyDXznPhYFOyTjJc13olIqzZCHBouE0FRMUjA+s1gTjaRgVFpqRwC8mfoXPPEVPS7LbRaJL2y7bOifRCTEli3U7BMWgLzKlW/CuebZPAAAAAElFTkSuQmCC);
+}
+#files .icon-text .name {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVBgZBcExblNBGAbA2ceegTRBuIKOgiihSZNTcC5LUHAihNJR0kGKCDcYJY6D3/77MdOinTvzAgCw8ysThIvn/VojIyMjIyPP+bS1sUQIV2s95pBDDvmbP/mdkft83tpYguZq5Jh/OeaYh+yzy8hTHvNlaxNNczm+la9OTlar1UdA/+C2A4trRCnD3jS8BB1obq2Gk6GU6QbQAS4BUaYSQAf4bhhKKTFdAzrAOwAxEUAH+KEM01SY3gM6wBsEAQB0gJ+maZoC3gI6iPYaAIBJsiRmHU0AALOeFC3aK2cWAACUXe7+AwO0lc9eTHYTAAAAAElFTkSuQmCC);
+}
 </style>
-    <script>
-      function $(id){
-        var el = 'string' == typeof id
-          ? document.getElementById(id)
-          : id;
-
-        el.on = function(event, fn){
-          if ('content loaded' == event) {
-            event = window.attachEvent ? "load" : "DOMContentLoaded";
-          }
-          el.addEventListener
-            ? el.addEventListener(event, fn, false)
-            : el.attachEvent("on" + event, fn);
-        };
-
-        el.all = function(selector){
-          return $(el.querySelectorAll(selector));
-        };
-
-        el.each = function(fn){
-          for (var i = 0, len = el.length; i < len; ++i) {
-            fn($(el[i]), i);
-          }
-        };
-
-        el.getClasses = function(){
-          return this.getAttribute('class').split(/\s+/);
-        };
-
-        el.addClass = function(name){
-          var classes = this.getAttribute('class');
-          el.setAttribute('class', classes
-            ? classes + ' ' + name
-            : name);
-        };
-
-        el.removeClass = function(name){
-          var classes = this.getClasses().filter(function(curr){
-            return curr != name;
-          });
-          this.setAttribute('class', classes.join(' '));
-        };
-
-        return el;
-      }
-
-      function search() {
-        var str = $('search').value.toLowerCase();
-        var links = $('files').all('a');
-
-        links.each(function(link){
-          var text = link.textContent.toLowerCase();
-
-          if ('..' == text) return;
-          if (str.length && ~text.indexOf(str)) {
-            link.addClass('highlight');
-          } else {
-            link.removeClass('highlight');
-          }
-        });
-      }
-
-      $(window).on('content loaded', function(){
-        $('search').on('keyup', search);
-      });
-    </script>
   </head>
   <body class="directory">
-    <input id="search" type="text" placeholder="Search" autocomplete="off" />
     <div id="wrapper">
-      <h1><a href="/">~</a> /useless </h1>
-      <ul id="files" class="view-tiles"><li><a href="./birthday.html" class="icon icon icon-html icon-text-html" title="birthday.html"><span class="name">birthday.html</span><span class="size">1206</span><span class="date">2024/1/13 11:43:28</span></a></li>
-<li><a href="./caipiao.html" class="icon icon icon-html icon-text-html" title="caipiao.html"><span class="name">caipiao.html</span><span class="size">2622</span><span class="date">2024/1/13 11:32:50</span></a></li>
-<li><a href="./turndark.html" class="icon icon icon-html icon-text-html" title="turndark.html"><span class="name">turndark.html</span><span class="size">1166</span><span class="date">2024/1/13 11:08:36</span></a></li>
-<li><a href="./while.html" class="icon icon icon-html icon-text-html" title="while.html"><span class="name">while.html</span><span class="size">3065</span><span class="date">2024/1/13 16:09:28</span></a></li></ul>
-    </div>
+      <h1><a href="/">~</a> / </h1>
+      <ul id="files" class="view-tiles">
+<li><a href="./turndark.html" class="icon icon icon-html icon-text-html" title="turndark.html"><span class="name">给图片关灯</span><span class="size">1166</span><span class="date">2024/2/8 10:47:28</span></a></li>
+<li><a href="./birthday.html" class="icon icon icon-html icon-text-html" title="birthday.html"><span class="name">生日网页制作</span><span class="size">1206</span><span class="date">2024/2/8 10:47:28</span></a></li>
+<li><a href="./caipiao.html" class="icon icon icon-html icon-text-html" title="caipiao.html"><span class="name">彩票模拟</span><span class="size">2622</span><span class="date">2024/2/8 10:47:28</span></a></li>
+<li><a href="./while.html" class="icon icon icon-html icon-text-html" title="while.html"><span class="name">套娃语句生成</span><span class="size">3065</span><span class="date">2024/2/8 10:47:28</span></a></li>
+<li><a href="./randomimg.html" class="icon icon icon-html icon-text-html" title="randomimg.html"><span class="name">随机图片生成</span><span class="size">1801</span><span class="date">2024/2/8 11:03:52</span></a></li>
+<li><a href="./encryptpost.html" class="icon icon icon-html icon-text-html" title="encryptpost.html"><span class="name">文章处理</span><span class="size">1181</span><span class="date">2024/2/8 11:16:20</span></a></li>
+<li><a href="./scalechar.html" class="icon icon icon-html icon-text-html" title="scalechar.html"><span class="name">看看这字怎么写</span><span class="size">668</span><span class="date">2024/2/8 11:21:42</span></a></li>
+<li><a href="./loading.html" class="icon icon icon-html icon-text-html" title="loading.html"><span class="name">加载综合征治疗</span><span class="size">1009</span><span class="date">2024/2/8 11:24:46</span></a></li>
+</ul>
+</div>
   </body>
 </html>

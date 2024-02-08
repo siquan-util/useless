@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机图片生成</title>
+</head>
+<body>
+    <img src="" alt="待生成" id="img">
+    <p>图片宽：<input type="number" placeholder="不填为随机" id="width" min="1" max="1080"/></p>
+    <p>图片高：<input type="number" placeholder="不填为随机" id="height" min="1" max="1080"/></p>
+    <button id="btn">生成</button>
+    <script>
+        var img=document.getElementById('img');
+        var btn=document.getElementById('btn');
+        btn.onclick=function(){
+            var w=document.getElementById('width').value;
+            var h=document.getElementById('height').value;
+            if(!w){
+                w=Math.floor(Math.random()*1080);
+            }else{
+                w=parseInt(w)
+            }
+
+            if(!h){
+                h=Math.floor(Math.random()*1080);
+            }else{
+                h=parseInt(h)
+            }
+
+            var canvas=document.createElement('canvas');
+            canvas.width=w;
+            canvas.height=h;
+            var ctx=canvas.getContext('2d');
+            for(var i=0;i<w;i++){
+                for(var j=0;j<h;j++){
+                    ctx.fillStyle=getRandomColor();
+                    ctx.fillRect(i,j,1,1);
+                }
+            }
+            img.src=canvas.toDataURL();
+
+        }
+        function getRandomColor(){
+            var r=Math.floor(Math.random()*256);
+            var g=Math.floor(Math.random()*256);
+            var b=Math.floor(Math.random()*256);
+            return 'rgb('+r+','+g+','+b+')';
+        }
+    </script>
+</body>
+</html>

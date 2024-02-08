@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在加载。。。</title>
+    <style>
+        .loading {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #ccc;
+            border-top-color: #000;
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+            margin: 100px auto;
+            margin-bottom: 0;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        p{
+            text-align: center;
+            color: #888;
+            font-size: 18px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading"></div>
+    <p>马上就好</p>
+</body>
+</html>

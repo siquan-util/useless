@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>这字怎么写？</title>
+</head>
+<body>
+    <p style="font-size:300px;padding:0;margin:0;"></p>
+    <input type="text"/>
+    <button>查看</button>
+</body>
+<script>
+var button = document.querySelector('button');
+var input = document.querySelector('input');
+var p = document.querySelector('p');
+button.addEventListener('click', function() {
+   p.innerText=input.value;
+   input.value = ''; // 清空输入框
+});
+</script>
+</html>
